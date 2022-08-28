@@ -1,0 +1,25 @@
+{
+  "name": "express-biztime",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KiaMorelos/35_1_node_pg_intro.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KiaMorelos/35_1_node_pg_intro/issues"
+  },
+  "homepage": "https://github.com/KiaMorelos/35_1_node_pg_intro#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "pg": "^8.8.0",
+    "slugify": "^1.6.5"
+  }
+}

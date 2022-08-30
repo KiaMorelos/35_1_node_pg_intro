@@ -21,6 +21,14 @@ router.get("/:code", async function(req, res, next){
         const results = await db.query("SELECT * FROM companies WHERE code = $1", [req.params.code]);
 
         const invData = await db.query("SELECT id FROM invoices WHERE comp_code = $1", [req.params.code]);
+        const indData = await db.query(`
+        SELECT i.industry FROM industries i
+          JOIN industry_companies ic 
+            ON i.code = ic.industry_code
+          JOIN companies c
+            ON c.code = ic.company_code 
+            WHERE c.code = $1;
+        `, [req.params.code])
 
         if (results.rows.length === 0) {
             const notFound = new Error(`There is no company with that code: ${req.params.code}`);
@@ -30,8 +38,10 @@ router.get("/:code", async function(req, res, next){
 
         const company = results.rows[0];
         const invoices = invData.rows;
+        const industries = indData.rows
 
         company.invoices = invoices.map(inv => inv.id);
+        company.industries = industries.map(ind => ind.industry);
 
         return res.json({"company": company});
     

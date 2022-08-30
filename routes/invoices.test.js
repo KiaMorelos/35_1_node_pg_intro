@@ -11,10 +11,6 @@ afterAll(async function(){
     await db.end()
 })
 
-afterAll(async function(){
-    await db.end()
-})
-
 describe("GET /invoices", function(){
     test("List of all invoices", async function(){
         const response = await request(app).get('/invoices');

@@ -55,19 +55,3 @@ INSERT INTO industry_companies (company_code, industry_code)
          ('ibm', 'tech'),
          ('apple', 'gdsn'),
          ('apple', 'tech');
-
-
-
-SELECT i.industry FROM industries i
-JOIN industry_companies ic 
-  ON i.code = ic.industry_code
-JOIN companies c
-  ON c.code = ic.company_code 
-  WHERE c.code = 'apple';
-
-SELECT c.code FROM companies c
-  JOIN industry_companies ic
-    ON c.code = ic.company_code
-  JOIN industries i
-    ON i.code = ic.industry_code
-  WHERE i.code = 'tech';
